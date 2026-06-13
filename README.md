@@ -197,9 +197,9 @@ pip install -r requirements.txt
 
 ## Launch Dashboard
 
-bash
+```bash
 streamlit run dashboard/app.py
-
+```
 
 The dashboard will be available at:
 http://localhost:8501
