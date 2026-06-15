@@ -227,7 +227,23 @@ http://localhost:8501
 * Automated bottleneck alerts
 * Interactive network graph visualization
 * Cloud deployment
+* 
+## Transportation Mode Decision Framework
 
+A comparative analysis of FTL and Carting operations was performed using shipment distance, travel time, and delay characteristics.
+
+### Key Findings
+
+- FTL shipments averaged 329.6 km with a delay ratio of 2.00.
+- Carting shipments averaged 26.6 km with a delay ratio of 2.45.
+- FTL is recommended for long-haul and high-volume corridors.
+- Carting is recommended for urban and last-mile distribution.
+
+### Outputs
+
+- reports/ftl_vs_carting_summary.csv
+- reports/ftl_carting_decision_framework.csv
+  
 ## Team
 
 This project was developed collaboratively by:
