@@ -173,13 +173,19 @@ delivery-eta-intelligence/
 │   ├── final_eta_model.pkl
 │   └── label_encoders.pkl
 │
+```text
 ├── notebooks/
 │   ├── 01_eda_and_quality_checks.ipynb
-│   ├── 02_eda_feature_engineering.ipynb
+│   ├── 02_eda_feature_engineering.ipynb │
 │   ├── 03_model_building.ipynb
-│   ├── 04_model_selection_and_finetuning.ipynb
+
+│   ├── 04_model_selection_and_final_model.ipynb
 │   ├── 05_network_analytics_and_dashboard_prep.ipynb
-│   └── 06_network_graph_analytics.ipynb
+│   ├── 06_network_graph_analytics.ipynb
+│   └── 07_ftl_vs_carting_decision_framework.ipynb
+│              FTL vs Carting recommendation framework
+```
+
 │
 ├── reports/
 │
@@ -226,7 +232,7 @@ http://localhost:8501
 * Automated bottleneck alerts
 * Interactive network graph visualization
 * Cloud deployment
-* 
+
 ## Transportation Mode Decision Framework
 
 A comparative analysis of FTL and Carting operations was performed using shipment distance, travel time, and delay characteristics.
