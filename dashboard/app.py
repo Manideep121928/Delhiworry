@@ -12,6 +12,7 @@ page = st.sidebar.radio(
         "Network Analytics",
         "Network Summary",
         "Model Performance",
+        "Graph Enhanced ETA",
         "Transportation Strategy"
     ]
 )
@@ -31,10 +32,10 @@ if page == "Overview":
         st.metric("Total Corridors", "2783")
 
     with col3:
-        st.metric("Best Model", "XGBoost")
+        st.metric("Best Model", "Node2Vec + XGBoost")
 
     with col4:
-        st.metric("R² Score", "0.7184")
+        st.metric("R² Score", "0.9987")
 
     st.divider()
 
@@ -174,6 +175,74 @@ elif page == "Network Summary":
     )
 
     st.divider()
+elif page == "Graph Enhanced ETA":
+
+    st.header("🕸️ Graph Enhanced ETA Prediction")
+
+    st.markdown("""
+    This module extends ETA prediction using Node2Vec graph embeddings
+    generated from the logistics network.
+
+    Network Statistics:
+    • 1,657 Logistics Hubs
+    • 2,783 Corridors
+    • 32-dimensional Node2Vec embeddings
+    • 64 graph embedding features
+    """)
+
+    comparison = pd.DataFrame({
+        "Metric": [
+            "MAE",
+            "RMSE",
+            "R²",
+            "Within 15% Accuracy"
+        ],
+        "Baseline XGBoost": [
+            5.399,
+            21.858,
+            0.998669,
+            99.535
+        ],
+        "Node2Vec + XGBoost": [
+            5.177,
+            21.272,
+            0.998739,
+            99.610
+        ]
+    })
+
+    st.subheader("Benchmark Comparison")
+    comparison.index = comparison.index + 1
+    st.dataframe(
+        comparison,
+        use_container_width=True
+    )
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric(
+            "MAE Improvement",
+            "4.1%"
+        )
+
+    with col2:
+        st.metric(
+            "RMSE Improvement",
+            "2.7%"
+        )
+
+    with col3:
+        st.metric(
+            "Within 15% Gain",
+            "+0.08%"
+        )
+
+    st.success(
+        "Graph-enhanced ETA prediction achieved measurable improvements "
+        "over the baseline model across all evaluation metrics."
+    )
+
 elif page == "Transportation Strategy":
 
     st.header("🚛 Transportation Strategy")
@@ -183,16 +252,7 @@ elif page == "Transportation Strategy":
     route_summary = pd.read_csv(
         "reports/ftl_vs_carting_summary.csv"
     )
-    st.subheader("FTL vs Carting Performance Comparison")
-
-    route_summary = pd.read_csv(
-        "reports/ftl_vs_carting_summary.csv"
-    )
-
-    st.dataframe(
-        route_summary,
-        use_container_width=True
-    )
+    route_summary.index = route_summary.index + 1
     st.dataframe(
         route_summary,
         use_container_width=True
@@ -224,8 +284,8 @@ elif page == "Transportation Strategy":
         • Distance > 150 km → Prefer FTL
         """
     )
-    comparison_chart = route_summary.copy()
 
+    comparison_chart = route_summary.copy()
     comparison_chart = comparison_chart.set_index("route_type")
 
     st.subheader("Average Distance Comparison")
@@ -233,6 +293,7 @@ elif page == "Transportation Strategy":
     st.bar_chart(
         comparison_chart["avg_distance"]
     )
+
     st.divider()
 
 elif page == "Model Performance":
@@ -242,12 +303,15 @@ elif page == "Model Performance":
     )
 
     st.header("🤖 Model Performance")
+
     model_comparison.index = model_comparison.index + 1
+
     st.dataframe(
         model_comparison,
         use_container_width=True
     )
 
     st.success(
-        "Selected Model: XGBoost | MAE = 10.60 | RMSE = 24.13 | R² = 0.7184"
+        "Best Production Model: Node2Vec + XGBoost | "
+        "MAE = 5.18 | RMSE = 21.27 | R² = 0.9987"
     )
