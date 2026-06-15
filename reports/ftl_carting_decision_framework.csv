@@ -1,0 +1,7 @@
+Condition,Recommended_Mode
+Distance < 50 km,Carting
+Distance > 150 km,FTL
+High Volume Corridor,FTL
+Urban Distribution,Carting
+Long Haul Transport,FTL
+Last Mile Delivery,Carting

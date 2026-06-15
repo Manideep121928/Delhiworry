@@ -1,0 +1,3 @@
+route_type,shipments,avg_actual_time,avg_osrm_time,avg_distance,avg_speed,avg_delay_ratio
+Carting,43675,70.37,30.47,26.63,35.0,2.45
+FTL,98827,576.34,298.34,329.59,43.16,2.0
